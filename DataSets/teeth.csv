@@ -1,0 +1,32 @@
+"Animal","TopInc","BotInc","TopCan","BotCan","TopPre","BotPre","TopMol","BotMol"
+"BROWN BAT           ",2,3,1,1,3,3,3,3
+"MOLE                ",3,2,1,0,3,3,3,3
+"SILVER HAIR BAT     ",2,3,1,1,2,3,3,3
+"PIGMY BAT           ",2,3,1,1,2,2,3,3
+"HOUSE BAT           ",2,3,1,1,1,2,3,3
+"RED BAT             ",1,3,1,1,2,2,3,3
+"PIKA                ",2,1,0,0,2,2,3,3
+"RABBIT              ",2,1,0,0,3,2,3,3
+"BEAVER              ",1,1,0,0,2,1,3,3
+"GROUNDHOG           ",1,1,0,0,2,1,3,3
+"GRAY SQUIRREL       ",1,1,0,0,1,1,3,3
+"HOUSE MOUSE         ",1,1,0,0,0,0,3,3
+"PORCUPINE           ",1,1,0,0,1,1,3,3
+"WOLF                ",3,3,1,1,4,4,2,3
+"BEAR                ",3,3,1,1,4,4,2,3
+"RACCOON             ",3,3,1,1,4,4,3,2
+"MARTEN              ",3,3,1,1,4,4,1,2
+"WEASEL              ",3,3,1,1,3,3,1,2
+"WOLVERINE           ",3,3,1,1,4,4,1,2
+"BADGER              ",3,3,1,1,3,3,1,2
+"RIVER OTTER         ",3,3,1,1,4,3,1,2
+"SEA OTTER           ",3,2,1,1,3,3,1,2
+"JAGUAR              ",3,3,1,1,3,2,1,1
+"COUGAR              ",3,3,1,1,3,2,1,1
+"FUR SEAL            ",3,2,1,1,4,4,1,1
+"SEA LION            ",3,2,1,1,4,4,1,1
+"GREY SEAL           ",3,2,1,1,3,3,2,2
+"ELEPHANT SEAL       ",2,1,1,1,4,4,1,1
+"REINDEER            ",0,4,1,0,3,3,3,3
+"ELK                 ",0,4,1,0,3,3,3,3
+"DEER                ",0,4,0,0,3,3,3,3
