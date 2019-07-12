@@ -44,9 +44,16 @@ wine <- transform(wine, class = as.factor(class))
      
       }
 
-# Compute Accuracy (Average and Std deviation ) 
+   # Compute Accuracy (Average and Std deviation ) 
       average_resub <- mean(unlist(resub_accuracy)) # Average of Resubstitutions
       average_hold_out <- mean(unlist(hold_out_accuracy)) # Average of HoldOut
       
       sd_resub <- sd(unlist(resub_accuracy))  # std deviation of Resubstitutions
       sd_hold_out <- sd(unlist(hold_out_accuracy)) # std deviation of HoldOut
+
+## Cross Validation 10-Fold Method
+      
+      library(plyr)
+      library(rpart)
+      N <- nrow(wine)
+      xVal_accuracy <- list()
