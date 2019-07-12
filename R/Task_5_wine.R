@@ -57,3 +57,40 @@ wine <- transform(wine, class = as.factor(class))
       library(rpart)
       N <- nrow(wine)
       xVal_accuracy <- list()
+
+for (t in 1:20){
+        # wine <- shuffle(wine)
+        correct_predictions <- 0
+        folds <- split(wine, cut(sample(1:nrow(wine)),10) )
+        
+        for (f in 1:length(folds)){
+          # dt build a predictive model from all records n data but i
+          trainingSet <- ldply(folds[-f], data.frame) #trainingSet
+          testSet <- ldply(folds[f], data.frame) #testSet
+          # paste("Test set size<",nrow(testSet),">; Training set size<", nrow(trainingSet), ">", sep="") 
+          wine.dt <- rpart(class ~ Alcohol + 
+                             Malic.acid +
+                             Ash +
+                             Alcalinity.of.ash +
+                             Magnesium +
+                             Total.phenols +
+                             Flavanoids +
+                             Nonflavanoid.phenols +
+                             Proanthocyanins +
+                             Color.intensity +
+                             Hue +
+                             OD280.OD315.of.diluted.wines +
+                             Proline, data=trainingSet, method="class")  #wine.dt   
+          # apply the model dt to the record
+          prediction <- predict(wine.dt, newdata=testSet, type="class") 
+          cM <- table(testSet$class, prediction) 
+          x <- sum(diag(cM))
+          # print(cM)
+          correct_predictions <- correct_predictions + x
+        }
+        
+        acc <- correct_predictions / N 
+        rErr <- 1.0 - acc 
+        print(paste("xVal method: accuracy = ", round(acc*100,1), "% and xVal error = ", round(rErr*100,1), "%", sep="")) 
+        xVal_accuracy[t] <- acc
+      }
