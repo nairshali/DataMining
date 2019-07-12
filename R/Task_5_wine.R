@@ -43,3 +43,10 @@ wine <- transform(wine, class = as.factor(class))
         print(paste("hold-out method: accuracy = ", round(acc*100,1), "% and error = ", round(rErr*100,1), "%", sep=""))
      
       }
+
+# Compute Accuracy (Average and Std deviation ) 
+      average_resub <- mean(unlist(resub_accuracy)) # Average of Resubstitutions
+      average_hold_out <- mean(unlist(hold_out_accuracy)) # Average of HoldOut
+      
+      sd_resub <- sd(unlist(resub_accuracy))  # std deviation of Resubstitutions
+      sd_hold_out <- sd(unlist(hold_out_accuracy)) # std deviation of HoldOut
