@@ -94,3 +94,8 @@ for (t in 1:20){
         print(paste("xVal method: accuracy = ", round(acc*100,1), "% and xVal error = ", round(rErr*100,1), "%", sep="")) 
         xVal_accuracy[t] <- acc
       }
+
+      
+      # Compute Accuracy (Average and Std deviation ) 
+      average_xVal <- mean(unlist(xVal_accuracy))   # Average of 10-fold
+      sd_xVal <- sd(unlist(xVal_accuracy)) # Std deviation of 10-fold
