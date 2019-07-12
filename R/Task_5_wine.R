@@ -34,5 +34,12 @@ wine <- transform(wine, class = as.factor(class))
         rErr <- 1.0 - acc 
         print(paste("resub method: accuracy = ", round(acc*100,1), "% and resubstitution error = ", round(rErr*100,1), "%", sep="")) 
         
-        
+        # Hold-out method: acc/error on the test set 
+        prediction <- predict(wine.dt, newdata=testSet, type="class") 
+        cM <- table(testSet$class, prediction) #print(cM) 
+        acc <- sum(diag(cM))/sum(cM) 
+        hold_out_accuracy[t] = acc
+        rErr <- 1.0 - acc 
+        print(paste("hold-out method: accuracy = ", round(acc*100,1), "% and error = ", round(rErr*100,1), "%", sep=""))
+     
       }
