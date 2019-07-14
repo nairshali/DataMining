@@ -107,18 +107,24 @@ for (t in 1:20){
       sampleSize <- ( N * 0.9 ) + 1
       loocv_accuracy <- list()
 
-for (t in 1:20){
-        #set.seed(1234) 
-        SampleIdx <- sample(N, size=sampleSize) #testSampleIdx 
-        correct_predictions <- 0
+      for (t in 1:20){
+         #set.seed(1234) 
+         SampleIdx <- sample(N, size=sampleSize) #testSampleIdx 
+         correct_predictions <- 0
         
-        for (i in SampleIdx){
-          # dt build a predictive model from all records n data but i
-          trainingSet <- wine[-i,] #trainingSet
-          testSet <- wine[i,] #testSet
-          # paste("Test set size<",nrow(testSet),">; Training set size<", nrow(trainingSet), ">", sep="")
+         for (i in SampleIdx){
+           # dt build a predictive model from all records n data but i
+           trainingSet <- wine[-i,] #trainingSet
+           testSet <- wine[i,] #testSet
+           # paste("Test set size<",nrow(testSet),">; Training set size<", nrow(trainingSet), ">", sep="")
           
-          wine.dt <- rpart(class ~., data=trainingSet, method="class")  #wine.dt
-          
+           wine.dt <- rpart(class ~., data=trainingSet, method="class")  #wine.dt
+           
+           # apply the model dt to the record
+           prediction <- predict(wine.dt, newdata=testSet, type="class")
+           cM <- table(testSet$class, prediction)
+           x <- sum(diag(cM))
+           # print(cM)
+           correct_predictions <- correct_predictions + x
          }
       }
