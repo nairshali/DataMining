@@ -137,3 +137,19 @@ for (t in 1:20){
       # Compute Accuracy (Average and Std deviation ) 
       average_loocv <- mean(unlist(loocv_accuracy))    # Average of leave one out
       sd_loocv <- sd(unlist(loocv_accuracy))  # Std deviation of leave one out
+
+## Bar chart 
+      # build dataframe
+      data <- data.frame("Method" = c('Resubstitutions','Hold-Out','10-Fold','LOOCV'))
+      
+      # bar plot Accuracy ( Mean )
+      library(plotly)
+      plot_ly(data, x = ~Method, y = ~ c(average_resub,average_hold_out,average_xVal,average_loocv) , type = 'bar', name = 'Average') %>%
+        add_trace(y = ~c(sd_resub,sd_hold_out,sd_xVal,sd_loocv), name = 'Std Deviations') %>%
+        layout(yaxis = list(title = 'Accuracy Percentage(%)'), barmode = 'group')
+      
+      # build dataframe
+      wine_accuracy_df <- data.frame(cbind("Method" = c('Resubstitutions','Hold-Out','10-Fold','LOOCV'), 
+                                           "Average " = c(average_resub,average_hold_out,average_xVal,average_loocv),
+                                           "Std Deviation" = c(sd_resub,sd_hold_out,sd_xVal,sd_loocv)
+      ))
