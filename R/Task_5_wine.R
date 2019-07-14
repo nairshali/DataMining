@@ -99,3 +99,10 @@ for (t in 1:20){
       # Compute Accuracy (Average and Std deviation ) 
       average_xVal <- mean(unlist(xVal_accuracy))   # Average of 10-fold
       sd_xVal <- sd(unlist(xVal_accuracy)) # Std deviation of 10-fold
+
+
+## Leave One Out Method
+      
+      N <- nrow(wine)
+      sampleSize <- ( N * 0.9 ) + 1
+      loocv_accuracy <- list()
