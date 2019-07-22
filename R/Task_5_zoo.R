@@ -47,3 +47,26 @@ for (t in 1:20){
       
       sd_resub <- sd(unlist(resub_accuracy))  # std deviation of Resubstitutions
       sd_hold_out <- sd(unlist(hold_out_accuracy)) # std deviation of HoldOut
+
+
+## Leave One Out Method
+      
+      N <- nrow(zoo)
+      sampleSize <- ( N * 0.9 ) + 1
+      loocv_accuracy <- list()
+      
+      for (t in 1:20){
+        #set.seed(1234) 
+        SampleIdx <- sample(N, size=sampleSize) #testSampleIdx 
+        correct_predictions <- 0
+        
+        for (i in SampleIdx){
+          # dt build a predictive model from all records n data but i
+          trainingSet <- zoo[-i,] #trainingSet
+          testSet <- zoo[i,] #testSet
+          # paste("Test set size<",nrow(testSet),">; Training set size<", nrow(trainingSet), ">", sep="")
+          
+          zoo.dt <- rpart(type ~. , data=trainingSet, method="class")  #zoo.dt
+          
+         
+        }
