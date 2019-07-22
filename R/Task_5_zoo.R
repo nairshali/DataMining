@@ -75,3 +75,15 @@ for (t in 1:20){
           # print(cM)
           correct_predictions <- correct_predictions + x
         }
+
+        acc <- correct_predictions/sampleSize
+        rErr <- 1.0 - acc 
+        print(paste("LOOCV method: accuracy = ", round(acc*100,1), "% and LOOCV error = ", round(rErr*100,1), "%", sep="")) 
+        loocv_accuracy[t] <- acc
+      }
+      
+      # Compute Accuracy (Average and Std deviation ) 
+      average_loocv <- mean(unlist(loocv_accuracy))    # Average of leave one out
+      sd_loocv <- sd(unlist(loocv_accuracy))  # Std deviation of leave one out
+
+
