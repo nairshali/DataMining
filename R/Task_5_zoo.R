@@ -68,5 +68,10 @@ for (t in 1:20){
           
           zoo.dt <- rpart(type ~. , data=trainingSet, method="class")  #zoo.dt
           
-         
+          # apply the model dt to the record
+          prediction <- predict(zoo.dt, newdata=testSet, type="class")
+          cM <- table(testSet$type, prediction)
+          x <- sum(diag(cM))
+          # print(cM)
+          correct_predictions <- correct_predictions + x
         }
