@@ -16,3 +16,12 @@ resub_tot_time <- list()
 holdout_tot_time <- list()
 
 
+Average_loocv <- list()
+sd_loocv <- list()
+loocv_tot_time <- list()
+
+# Total No of rows input data set
+No_rows <- nrow(bcw) + 1
+
+# initialize for sampling data
+i <- 0
