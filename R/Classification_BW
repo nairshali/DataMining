@@ -77,5 +77,18 @@ for (s in seq(100,No_rows,100)){
 
         end_time <- Sys.time()
         resub_time[t] <- end_time - start_time
+        
+        start_time <- Sys.time()
+        # Hold-out method: acc/error on the test set
+        prediction <- predict(bcw.dt, newdata=testSet, type="class")
+        cM <- table(testSet$Class, prediction) #print(cM)
+        acc <- sum(diag(cM))/sum(cM)
+        hold_out_accuracy[t] = acc
+        rErr <- 1.0 - acc
+        end_time <- Sys.time()
+        holdout_time[t] <- end_time - start_time
+
+        print(paste("hold-out method: accuracy = ", round(acc*100,1), "% and error = ", round(rErr*100,1), "%", sep=""))
+     
         }
 }
