@@ -62,6 +62,20 @@ for (s in seq(100,No_rows,100)){
         testSet <- bcw.data[testSampleIdx,] #testSet
         trainingSet <- bcw.data[-testSampleIdx,] #trainingSet
         print(paste("Test set size<",nrow(testSet),">; Training set size<", nrow(trainingSet), ">", sep=""))
+        
+        # build a predictive model
+        bcw.dt <- rpart(Class ~ ., data=trainingSet, method="class")  #bcw.dt
 
+        start_time <- Sys.time()
+        # Resubstitution method: acc/error on the training set
+        prediction <- predict(bcw.dt, newdata=trainingSet, type="class")
+        cM <- table(trainingSet$Class, prediction) #print(cM)
+        acc <- sum(diag(cM))/sum(cM)
+        resub_accuracy[t] = acc
+        rErr <- 1.0 - acc
+        print(paste("resub method: accuracy = ", round(acc*100,1), "% and resubstitution error = ", round(rErr*100,1), "%", sep=""))
+
+        end_time <- Sys.time()
+        resub_time[t] <- end_time - start_time
         }
 }
