@@ -113,5 +113,13 @@ for (s in seq(100,No_rows,100)){
        # bcw <- shuffle(bcw)
         correct_predictions <- 0
         folds <- split(bcw, cut(sample(1:nrow(bcw)),10) )
+      
+      for (f in 1:length(folds)){
+          # dt build a predictive model from all records n data but i
+          trainingSet <- ldply(folds[-f], data.frame) #trainingSet
+          testSet <- ldply(folds[f], data.frame) #testSet
+          
+        }
+
       }
 }
