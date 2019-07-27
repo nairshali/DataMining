@@ -1,0 +1,15 @@
+library(rpart) 
+library(plyr)
+
+# Load data
+bcw <-read.table(file.choose(),header=T,sep=",") 
+bcw <- transform(bcw, Class = as.factor(Class))
+
+# initialize variables
+Rand.sample <- list()
+Average_resub <- list()
+Average_hold_out <- list()
+sd_resub <- list()
+sd_hold_out <- list()
+resub_tot_time <- list()
+holdout_tot_time <- list()
