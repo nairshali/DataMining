@@ -40,4 +40,21 @@ for (s in seq(100,No_rows,100)){
   SampledataIdx <- sample(No_rows, size = s, replace = FALSE)
   bcw.data <- bcw[SampledataIdx,]
   # print(paste(SampledataIdx))
+  
+  # initialize variables
+  resub_accuracy <- list()
+  hold_out_accuracy <- list()
+  resub_time <- list()
+  holdout_time <- list()
+
+  # Resubstitutions and HoldOut
+      # No of Trials
+      for (t in 1:20){
+
+        # sample size 90% - 10%
+        bcw_row <- nrow(bcw.data)
+        sampleRate <- 0.10
+        sampleSize <- bcw_row * sampleRate
+        # paste("sample size is: ", sampleSize)
+        }
 }
