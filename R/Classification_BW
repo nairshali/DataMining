@@ -56,5 +56,12 @@ for (s in seq(100,No_rows,100)){
         sampleRate <- 0.10
         sampleSize <- bcw_row * sampleRate
         # paste("sample size is: ", sampleSize)
+        
+        # Test data and training data
+        testSampleIdx <- sample(bcw_row, size=sampleSize) #testSampleIdx
+        testSet <- bcw.data[testSampleIdx,] #testSet
+        trainingSet <- bcw.data[-testSampleIdx,] #trainingSet
+        print(paste("Test set size<",nrow(testSet),">; Training set size<", nrow(trainingSet), ">", sep=""))
+
         }
 }
