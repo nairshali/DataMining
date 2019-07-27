@@ -91,4 +91,15 @@ for (s in seq(100,No_rows,100)){
         print(paste("hold-out method: accuracy = ", round(acc*100,1), "% and error = ", round(rErr*100,1), "%", sep=""))
      
         }
+        
+      # Mean / std for each sample data
+      sd_resub[i] <- sd(unlist(resub_accuracy))
+      sd_hold_out[i] <- sd(unlist(hold_out_accuracy))
+
+      Average_resub[i] <- mean(unlist(resub_accuracy))
+      Average_hold_out[i] <- mean(unlist(hold_out_accuracy))
+
+      # Time monitoring
+      holdout_tot_time[i] <- sum(unlist(holdout_time))
+      resub_tot_time[i] <- sum(unlist(resub_time))
 }
