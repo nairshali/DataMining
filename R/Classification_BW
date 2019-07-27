@@ -40,3 +40,4 @@ for (s in seq(100,No_rows,100)){
   SampledataIdx <- sample(No_rows, size = s, replace = FALSE)
   bcw.data <- bcw[SampledataIdx,]
   # print(paste(SampledataIdx))
+}
