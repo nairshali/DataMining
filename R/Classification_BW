@@ -25,3 +25,18 @@ No_rows <- nrow(bcw) + 1
 
 # initialize for sampling data
 i <- 0
+
+# randomly selecting a sample (e.g., with size 
+# varying from 100 to n) from the original dataset D (|D|=n)
+for (s in seq(100,No_rows,100)){
+  
+  # increment
+  i = i + 1
+  
+  # sample size
+  Rand.sample[i] <- s
+  
+  # sample data   
+  SampledataIdx <- sample(No_rows, size = s, replace = FALSE)
+  bcw.data <- bcw[SampledataIdx,]
+  # print(paste(SampledataIdx))
