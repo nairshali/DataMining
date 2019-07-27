@@ -110,5 +110,8 @@ for (s in seq(100,No_rows,100)){
       start_time <- Sys.time()
 
       for (t in 1:20){
+       # bcw <- shuffle(bcw)
+        correct_predictions <- 0
+        folds <- split(bcw, cut(sample(1:nrow(bcw)),10) )
       }
 }
