@@ -102,4 +102,13 @@ for (s in seq(100,No_rows,100)){
       # Time monitoring
       holdout_tot_time[i] <- sum(unlist(holdout_time))
       resub_tot_time[i] <- sum(unlist(resub_time))
+      
+      # 10-Fold
+      N <- nrow(bcw)
+      xVal_accuracy <- list()
+
+      start_time <- Sys.time()
+
+      for (t in 1:20){
+      }
 }
