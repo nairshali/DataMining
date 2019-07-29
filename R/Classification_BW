@@ -119,6 +119,25 @@ for (s in seq(100,No_rows,100)){
           trainingSet <- ldply(folds[-f], data.frame) #trainingSet
           testSet <- ldply(folds[f], data.frame) #testSet
           
+          # paste("Test set size<",nrow(testSet),">; Training set size<", nrow(trainingSet), ">", sep="")
+          bcw.dt <- rpart(Class ~Sample.code.number +
+                            Clump.Thickness  +
+                            Uniformity.of.Cell.Size   +
+                            Uniformity.of.Cell.Shape  +
+                            Marginal.Adhesion   +
+                            Single.Epithelial.Cell.Size    +
+                            Bare.Nuclei       +
+                            Bland.Chromatin    +
+                            Normal.Nucleoli    +
+                            Mitoses , data=trainingSet, method="class")  #bcw.dt
+          
+          # apply the model dt to the record
+          prediction <- predict(bcw.dt, newdata=testSet, type="class")
+          cM <- table(testSet$Class, prediction)
+          x <- sum(diag(cM))
+          
+          # print(cM)
+          correct_predictions <- correct_predictions + x
         }
 
       }
