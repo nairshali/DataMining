@@ -145,4 +145,12 @@ for (s in seq(100,No_rows,100)){
         print(paste("xVal method: accuracy = ", round(acc*100,1), "% and xVal error = ", round(rErr*100,1), "%", sep=""))
         xVal_accuracy[t] <- acc
       }
+      end_time <- Sys.time()
+
+      # Mean / std for each sample data
+      sd_xVal[i] <- sd(unlist(xVal_accuracy))
+      Average_xVal[i] <- mean(unlist(xVal_accuracy))
+
+      # Time monitoring
+      xVal_tot_time[i] <- end_time - start_time
 }
