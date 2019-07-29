@@ -222,3 +222,15 @@ library(plotly)
 plot_ly(data, x = ~Sampledata, y = ~Average_hold_out, type = 'bar', name = 'Mean') %>%
   add_trace(y = ~sd_hold_out, name = 'Std. deviation') %>%
   layout(yaxis = list(title = 'Accuracy Percentage'), barmode = 'group')
+  
+# 10-Fold - Bar Plot Accuracy ( Mean and std deviation ) 
+library(plotly)
+plot_ly(data, x = ~Sampledata, y = ~Average_xVal, type = 'bar', name = 'Mean') %>%
+  add_trace(y = ~sd_xVal, name = 'Std. deviation') %>%
+  layout(yaxis = list(title = 'Accuracy Percentage'), barmode = 'group')
+
+# Leave One Out - Bar Plot Accuracy ( Mean and std deviation ) 
+library(plotly)
+plot_ly(data, x = ~Sampledata, y = ~Average_loocv, type = 'bar', name = 'Mean') %>%
+  add_trace(y = ~sd_loocv, name = 'Std. deviation') %>%
+  layout(yaxis = list(title = 'Accuracy Percentage'), barmode = 'group')
