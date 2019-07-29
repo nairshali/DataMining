@@ -206,3 +206,13 @@ for (s in seq(100,No_rows,100)){
       loocv_tot_time[i] <- end_time - start_time
   
 }
+
+# build sample data dataframe
+data <- data.frame(cbind("Sampledata" = Rand.sample))
+
+# Resubstitution - Bar Plot Accuracy ( Mean and std deviation ) 
+library(plotly)
+plot_ly(data, x = ~Sampledata, y = ~Average_resub, type = 'bar', name = 'Mean') %>%
+        add_trace(y = ~sd_resub, name = 'Std. deviation') %>%
+        layout(yaxis = list(title = 'Accuracy Percentage'), barmode = 'group')
+
