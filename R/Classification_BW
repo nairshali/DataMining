@@ -153,4 +153,18 @@ for (s in seq(100,No_rows,100)){
 
       # Time monitoring
       xVal_tot_time[i] <- end_time - start_time
+      
+      
+      # Leave one out Method
+      N <- nrow(bcw)
+      sampleSize <- ( N * 0.9 ) + 1
+      loocv_accuracy <- list()
+
+      start_time <- Sys.time()
+
+      for (t in 1:20){
+        #set.seed(1234)
+        SampleIdx <- sample(N, size=sampleSize) #testSampleIdx
+        correct_predictions <- 0
+      }
 }
