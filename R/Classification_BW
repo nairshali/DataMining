@@ -234,3 +234,15 @@ library(plotly)
 plot_ly(data, x = ~Sampledata, y = ~Average_loocv, type = 'bar', name = 'Mean') %>%
   add_trace(y = ~sd_loocv, name = 'Std. deviation') %>%
   layout(yaxis = list(title = 'Accuracy Percentage'), barmode = 'group')
+  
+  
+  
+# bar plot SampleData vs Execution time
+library(plotly)
+plot_ly(data, x = ~Sampledata, y = ~resub_tot_time, type = 'bar', name = 'Resubstitution Time') %>%
+  add_trace(y = ~holdout_tot_time, name = 'Hold-Out Time') %>%
+  layout(yaxis = list(title = 'Time in Minutes'), barmode = 'group')
+
+plot_ly(data, x = ~Sampledata, y = ~xVal_tot_time, type = 'bar', name = '10-Fold Time') %>%
+  add_trace(y = ~loocv_tot_time, name = 'LOOCV Time') %>%
+  layout(yaxis = list(title = 'Time in Minutes'), barmode = 'group')
