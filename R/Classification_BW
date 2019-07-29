@@ -139,6 +139,10 @@ for (s in seq(100,No_rows,100)){
           # print(cM)
           correct_predictions <- correct_predictions + x
         }
-
+        
+        acc <- correct_predictions / N
+        rErr <- 1.0 - acc
+        print(paste("xVal method: accuracy = ", round(acc*100,1), "% and xVal error = ", round(rErr*100,1), "%", sep=""))
+        xVal_accuracy[t] <- acc
       }
 }
