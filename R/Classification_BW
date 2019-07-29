@@ -189,4 +189,20 @@ for (s in seq(100,No_rows,100)){
         loocv_accuracy[t] <- acc
         
       }
+
+        acc <- correct_predictions/sampleSize
+        rErr <- 1.0 - acc
+        print(paste("LOOCV method: accuracy = ", round(acc*100,1), "% and LOOCV error = ", round(rErr*100,1), "%", sep=""))
+        loocv_accuracy[t] <- acc
+      }
+
+      end_time <- Sys.time()
+
+      # Mean / std for each sample data
+      sd_loocv[i] <- sd(unlist(loocv_accuracy))
+      Average_loocv[i] <- mean(unlist(loocv_accuracy))
+
+      # Time monitoring
+      loocv_tot_time[i] <- end_time - start_time
+  
 }
